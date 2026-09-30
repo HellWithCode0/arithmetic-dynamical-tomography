@@ -5,7 +5,8 @@ import csv
 import json
 from pathlib import Path
 
-from .core import canon, periodic_cycles, primes_below, solvable_fingerprint
+from .core import (canon, observed_prime_power_threshold, periodic_cycles,
+                   predicted_prime_power_threshold, primes_below, solvable_fingerprint)
 
 
 def squarefree_factors(n: int):
@@ -79,17 +80,19 @@ def depth(args):
         if p == 2:
             continue
         for c in args.probes:
-            zp, zp2 = periodic_cycles(p, c), periodic_cycles(p * p, c)
-            max_depth = max([1, *zp, *zp2]) * 2
-            first = next((k for k in range(1, max_depth + 1)
-                          if sum(d*m for d,m in zp.items() if k%d == 0) !=
-                             sum(d*m for d,m in zp2.items() if k%d == 0)), None)
-            rows.append({"p": p, "c": c, "first_visible_depth": first})
+            predicted = predicted_prime_power_threshold(p, c)
+            observed = observed_prime_power_threshold(p, c)
+            rows.append({"p": p, "c": c, "predicted_threshold": predicted,
+                         "observed_threshold": observed, "agreement": predicted == observed,
+                         "all_cycles_critical": predicted is None})
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("w", newline="", encoding="utf-8") as fh:
-        writer = csv.DictWriter(fh, fieldnames=["p", "c", "first_visible_depth"])
+        writer = csv.DictWriter(fh, fieldnames=["p", "c", "predicted_threshold",
+                                "observed_threshold", "agreement", "all_cycles_critical"])
         writer.writeheader(); writer.writerows(rows)
-    print(json.dumps({"rows": len(rows), "output": str(args.output)}, sort_keys=True))
+    print(json.dumps({"rows": len(rows), "agreements": sum(r["agreement"] for r in rows),
+                      "all_critical": sum(r["all_cycles_critical"] for r in rows),
+                      "output": str(args.output)}, sort_keys=True))
 
 
 def main():
@@ -98,7 +101,7 @@ def main():
     p = sub.add_parser("collision-65-119"); p.add_argument("--output", type=Path, required=True); p.set_defaults(fn=collision)
     p = sub.add_parser("prime-separation"); p.add_argument("--bound", type=int, default=100000); p.add_argument("--output", type=Path, required=True); p.set_defaults(fn=separation)
     p = sub.add_parser("squarefree-search"); p.add_argument("--bound", type=int, default=100000); p.add_argument("--output", type=Path, required=True); p.set_defaults(fn=squarefree)
-    p = sub.add_parser("prime-power-depths"); p.add_argument("--prime-bound", type=int, default=100); p.add_argument("--probes", type=int, nargs="+", default=[0, -2, 1, 2]); p.add_argument("--output", type=Path, required=True); p.set_defaults(fn=depth)
+    p = sub.add_parser("prime-power-depths"); p.add_argument("--prime-bound", type=int, default=100); p.add_argument("--probes", type=int, nargs="+", default=list(range(-3, 4))); p.add_argument("--output", type=Path, required=True); p.set_defaults(fn=depth)
     args = parser.parse_args(); args.fn(args)
 
 

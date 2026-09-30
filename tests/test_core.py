@@ -1,4 +1,6 @@
-from adt.core import canon, marks, odd_part, periodic_cycles, solvable_fingerprint, zset_mul
+from adt.core import (canon, marks, observed_prime_power_threshold, odd_part,
+                      periodic_cycle_points, periodic_cycles,
+                      predicted_prime_power_threshold, solvable_fingerprint, zset_mul)
 
 
 def test_burnside_product():
@@ -32,3 +34,28 @@ def test_total_periodic_counts_recover_local_odd_parts():
         assert n0 == 1 + odd_part(p - 1)
         assert nm2 == (odd_part(p - 1) + odd_part(p + 1)) // 2
         assert 2 * nm2 - n0 + 1 == odd_part(p + 1)
+
+
+def test_multiplier_threshold_all_small_cases():
+    for p in (3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47):
+        for c in range(-3, 4):
+            assert predicted_prime_power_threshold(p, c) == observed_prime_power_threshold(p, c)
+
+
+def test_multiplier_zero_one_and_other_cases():
+    assert periodic_cycle_points(3, -1) == [(0, 2)]
+    assert predicted_prime_power_threshold(3, -1) is None
+    assert observed_prime_power_threshold(3, -1) is None
+    assert periodic_cycle_points(3, 1) == [(2,)]
+    assert predicted_prime_power_threshold(3, 1) == 1
+    assert observed_prime_power_threshold(3, 1) == 1
+    assert marks(periodic_cycles(3, 1), 1) == (1,)
+    assert marks(periodic_cycles(9, 1), 1) == (0,)
+    assert predicted_prime_power_threshold(5, -3) == 8
+    assert observed_prime_power_threshold(5, -3) == 8
+
+
+def test_all_critical_examples_are_equal_at_every_depth():
+    for c in (1, 2):
+        assert predicted_prime_power_threshold(41, c) is None
+        assert canon(periodic_cycles(41, c)) == canon(periodic_cycles(41 * 41, c))

@@ -122,6 +122,63 @@ def periodic_cycles(n: int, c: int) -> dict[int, int]:
     return dict(cycles)
 
 
+def periodic_cycle_points(n: int, c: int) -> list[tuple[int, ...]]:
+    """Return each periodic orbit once, with a deterministic rotation."""
+    state = bytearray(n)
+    cycles = []
+    for start in range(n):
+        if state[start]:
+            continue
+        path, pos, x = [], {}, start
+        while not state[x] and x not in pos:
+            pos[x] = len(path)
+            path.append(x)
+            x = (x * x + c) % n
+        if x in pos:
+            cycle = path[pos[x]:]
+            j = cycle.index(min(cycle))
+            cycles.append(tuple(cycle[j:] + cycle[:j]))
+        for y in path:
+            state[y] = 1
+    return sorted(cycles)
+
+
+def multiplicative_order(a: int, p: int) -> int:
+    x = a % p
+    for k in range(1, p):
+        if x == 1:
+            return k
+        x = x * a % p
+    raise ValueError("a is not a unit modulo p")
+
+
+def predicted_prime_power_threshold(p: int, c: int) -> int | None:
+    """min ell*ord_p(lambda) over noncritical cycles; None means all critical."""
+    values = []
+    for cycle in periodic_cycle_points(p, c):
+        multiplier = 1
+        for x in cycle:
+            multiplier = multiplier * (2 * x) % p
+        if multiplier:
+            values.append(len(cycle) * multiplicative_order(multiplier, p))
+    return min(values, default=None)
+
+
+def observed_prime_power_threshold(p: int, c: int) -> int | None:
+    """Exact first differing mark from complete cycle inventories.
+
+    None is returned only when the inventories modulo p and p^2 are equal,
+    which implies equality of every mark; this is not a cutoff convention.
+    """
+    a, b = periodic_cycles(p, c), periodic_cycles(p * p, c)
+    if canon(a) == canon(b):
+        return None
+    for k in range(1, max([*a, *b]) + 1):
+        if sum(d*m for d,m in a.items() if k%d == 0) != sum(d*m for d,m in b.items() if k%d == 0):
+            return k
+    raise AssertionError("distinct cycle inventories must have a differing mark")
+
+
 def marks(z: dict[int, int], depth: int) -> tuple[int, ...]:
     return tuple(sum(d * count for d, count in z.items() if k % d == 0)
                  for k in range(1, depth + 1))

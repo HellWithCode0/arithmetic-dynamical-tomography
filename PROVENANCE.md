@@ -7,7 +7,7 @@ The files in `results/reproduced/` were generated from `src/adt/` in a clean inv
 - `collision_65_119.json`: direct full-cycle enumeration for both moduli and both probes.
 - `prime_separation_100000.json`: all odd primes below 100,000 checked using the exact `c=0,-2` formulas.
 - `squarefree_100000.json`: all odd squarefree moduli through 100,000 searched using CRT/Burnside synthesis.
-- `prime_power_depths.csv`: direct comparisons of `p` and `p^2` for odd primes below 100 and four probes.
+- `prime_power_depths.csv`: multiplier-order predictions and independent direct comparisons of `p` and `p^2` for every odd prime below 100 and all seven probes `-3,...,3`. Empty thresholds are exact all-critical cases with equal complete inventories, not cutoff observations.
 
 The test suite also compares the exact formulas with an independent direct enumerator on ten small primes.
 
