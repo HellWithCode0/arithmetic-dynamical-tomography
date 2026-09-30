@@ -2,6 +2,8 @@
 
 This repository accompanies **“Arithmetic Dynamical Tomography: Reconstruction Obstructions and Prime-Power Detection.”** It contains a small, dependency-free Python implementation of the central finite computations, tests, machine-readable reproduced outputs, and an archival copy of the supplied earlier computational materials.
 
+The version cited by the manuscript is [v1.0.0](https://github.com/HellWithCode0/arithmetic-dynamical-tomography/releases/tag/v1.0.0). Use the tagged source archive when reproducing the reported checks. The journal manuscript is distributed separately.
+
 For `f_c(x)=x^2+c` on `Z/nZ`, the code records the periodic functional graph as a finite `Z`-set: a mapping from cycle length to number of cycles. It implements the Burnside product used by the Chinese remainder theorem and the closed formulas for the exactly solvable probes `c=0,-2`.
 
 ## Quick start
