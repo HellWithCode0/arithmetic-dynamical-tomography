@@ -1,0 +1,21 @@
+(a) predicted first depth at which p^2 is visible: 170 agree, 0 disagree (p < 160, 5 probes)
+(b) T_c(p) over primes 1000 < p < 20000
+  c=1: primes where every cycle is critical (p^e invisible at ALL depths): []
+  c=1: median log T/log p = 0.924;  frac(T <= 50) = 0.0086;  frac(T < sqrt p) = 0.0158
+  c=2: primes where every cycle is critical (p^e invisible at ALL depths): [1097]
+  c=2: median log T/log p = 0.926;  frac(T <= 50) = 0.0119;  frac(T < sqrt p) = 0.0181
+  c=3: primes where every cycle is critical (p^e invisible at ALL depths): []
+  c=3: median log T/log p = 0.910;  frac(T <= 50) = 0.0181;  frac(T < sqrt p) = 0.0224
+  c=0: primes where every cycle is critical (p^e invisible at ALL depths): []
+  c=0: median log T/log p = 0.925;  frac(T <= 50) = 0.0057;  frac(T < sqrt p) = 0.0086
+  C={-3..3} (min over probes), first 600 primes > 1000: median log T/log p = 0.721; min T = 4
+  all-critical primes p < 20000 for c=1: [5, 41]
+  all-critical primes p < 20000 for c=2: [3, 19, 41, 1097]
+  all-critical primes p < 20000 for c=3: [7, 13]
+  all-critical primes p < 20000 for c=4: [13, 29, 37]
+  all-critical primes p < 20000 for c=5: [3, 67, 107, 227]
+  all-critical primes p < 20000 for c=6: [5, 7, 11, 389]
+  all-critical primes p < 20000 for c=7: [29, 449]
+  all-critical primes p < 20000 for c=8: [3, 3347]
+  all-critical primes p < 20000 for c=9: [53, 241]
+  all-critical primes p < 20000 for c=10: [7, 19, 1009]

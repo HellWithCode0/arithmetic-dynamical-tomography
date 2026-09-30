@@ -1,0 +1,19 @@
+(a) least injective depth on primes in (X/2, X]
+  |S|  S                1250    2500    5000   10000   20000   40000   80000   slope d(log K)/d(log #primes)
+  1    [2]               inf      67     inf     inf     inf     inf     inf   nan  (heuristic 1/|S| = 1.00)
+  1    [5]                77      90     inf     182     inf     inf     inf   0.47  (heuristic 1/|S| = 1.00)
+  1    [-4]               45     inf     inf     178     inf     inf     inf   0.75  (heuristic 1/|S| = 1.00)
+  2    [2, 5]             24      10      16      19      53      56      90   0.36  (heuristic 1/|S| = 0.50)
+  2    [1, 4]             11      18      22      36      41      53      62   0.47  (heuristic 1/|S| = 0.50)
+  2    [3, -5]            11      14      18      30      43      42      61   0.46  (heuristic 1/|S| = 0.50)
+  3    [2, 5, -4]          5       7       8       9      14      14      20   0.37  (heuristic 1/|S| = 0.33)
+  3    [1, 4, -5]         11      10      11      14      14      17      37   0.33  (heuristic 1/|S| = 0.33)
+  3    [3, 7, -4]          6       9       8       8      11      20      19   0.31  (heuristic 1/|S| = 0.33)
+  4    [1, 2, 5, -4]        4       7       6       6       8      11      16   0.37  (heuristic 1/|S| = 0.25)
+  4    [3, 4, 7, -5]        4       6       6       8      11      10      12   0.30  (heuristic 1/|S| = 0.25)
+
+(b) Theorem target B for C = {-3..3}: least K making ADF_{C,K} injective on odd semiprimes pq <= X
+  X =     1000:     194 semiprimes, least depth K(X) = 4
+  X =    10000:    1932 semiprimes, least depth K(X) = 9
+  X =   100000:   18181 semiprimes, least depth K(X) = 12
+  X =  1000000:  168330 semiprimes, least depth K(X) = 20

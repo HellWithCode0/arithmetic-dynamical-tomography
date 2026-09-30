@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use these computations, please cite the accompanying article."
+title: "Arithmetic Dynamical Tomography: reproducibility repository"
+type: software
+version: 1.0.0
+date-released: 2026-09-30
+authors:
+  - family-names: Katoch
+    given-names: Aryaman
+    affiliation: Sanskriti School
+    email: 6949@sanskritischool.edu.in

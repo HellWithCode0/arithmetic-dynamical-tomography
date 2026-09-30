@@ -1,0 +1,3 @@
+odd squarefree n <= 10000000 skipped for lack of local data (a prime factor > data range): 847736
+C = [-3, -2, -1, 0, 1, 2, 3]: odd squarefree n <= 10000000 examined: 3205138, distinct fingerprints: 3205138
+colliding pairs: 0, primitive (coprime) pairs: 0

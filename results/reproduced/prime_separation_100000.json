@@ -1,0 +1,7 @@
+{
+  "bound_exclusive": 100000,
+  "collision_count": 0,
+  "collisions": [],
+  "odd_primes_checked": 9591,
+  "scope": "finite verification supporting the unconditional prime-separation theorem"
+}

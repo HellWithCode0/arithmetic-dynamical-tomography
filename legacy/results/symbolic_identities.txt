@@ -1,0 +1,12 @@
+(1) Phi_2 = c + x**2 + x + 1 ; Phi_2(x,c) - Phi_1(-x,c+1) = 0
+    disc Phi_1 = 1 - 4*c ; disc Phi_2 = -4*c - 3
+(2) disc_x Phi_3 = -(4*c + 7)**3*(16*c**2 + 4*c + 7)**2
+    Res(Phi_3, s - cycle sum) = (c + s**2 + s + 2)**3
+(4) c = -3: degrees of irreducible factors of Phi_3: [6], of Phi_4: [12]
+(4) c = -2: degrees of irreducible factors of Phi_3: [3, 3], of Phi_4: [4, 8]
+(4) c = -1: degrees of irreducible factors of Phi_3: [6], of Phi_4: [12]
+(4) c =  0: degrees of irreducible factors of Phi_3: [6], of Phi_4: [4, 8]
+(4) c =  1: degrees of irreducible factors of Phi_3: [6], of Phi_4: [12]
+(4) c =  2: degrees of irreducible factors of Phi_3: [6], of Phi_4: [12]
+(4) c =  3: degrees of irreducible factors of Phi_3: [6], of Phi_4: [12]
+(3) Res(Phi_4, s - cycle sum) = (4*c*s + s**3 + 3*s + 4)**4

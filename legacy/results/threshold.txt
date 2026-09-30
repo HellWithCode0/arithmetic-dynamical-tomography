@@ -1,0 +1,3 @@
+odd primes < 1200, 8 probes: agree 1540, mismatch 0; of the agreeing/mismatching cases 1495 have 2^T > p (so p > 2^T + 1 fails)
+all-critical primes: 20 invisible at every depth as predicted, 0 not
+max over (p,c) of #periodic points / ((p+1)/2) = 1.0000  (must be <= 1)

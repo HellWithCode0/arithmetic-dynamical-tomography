@@ -1,0 +1,35 @@
+(a) mean of P_c(p,k) over primes 50 < p < 1e5; prediction tau(k) for generic c
+  k   tau    c=1      c=2      c=3      c=4      c=5      c=7    
+  1   1       0.998    0.997    0.998    0.999    0.998    0.998
+  2   2       1.994    1.995    1.997    1.997    1.992    1.999
+  3   2       1.999    1.982    1.994    1.995    2.002    2.010
+  4   3       2.982    2.987    2.985    2.977    2.985    3.015
+  5   2       1.962    2.008    1.973    1.973    1.975    1.980
+  6   4       3.968    3.959    3.940    3.985    4.011    3.942
+  7   2       1.997    2.030    1.988    1.990    1.972    1.973
+  8   4       4.000    3.992    4.000    3.987    3.952    3.999
+
+(b) law of the number of rational k-cycles: data (c=1,2,3,4,5,7 pooled) vs wreath product
+  k=3 (r=2):  j=0: 0.7228 vs 0.7222  j=1: 0.2213 vs 0.2222  j=2: 0.0558 vs 0.0556
+  k=4 (r=3):  j=0: 0.7812 vs 0.7786  j=1: 0.1920 vs 0.1953  j=2: 0.0244 vs 0.0234  j=3: 0.0025 vs 0.0026
+  k=5 (r=6):  j=0: 0.8218 vs 0.8187  j=1: 0.1614 vs 0.1637  j=2: 0.0158 vs 0.0164  j=3: 0.0010 vs 0.0011
+
+(c) cross-probe constraints (violations should be 0)
+  3-cycles: 29239 (p,c) with a rational 3-cycle; violations of 'f_(c+2) has a fixed point': 0
+  4-cycles: 22437 (p,c) with a rational 4-cycle; violations of '#4-cycles <= #roots of cubic' (p<3000): 0
+
+(d) mean N_c(p)/sqrt(p) over primes 1e4 < p < 1e5 (random-mapping prediction sqrt(pi/2) = 1.2533)
+  c= -6: 1.2409
+  c= -5: 1.2460
+  c= -4: 1.2455
+  c= -3: 1.2454
+  c= -2: 74.5507
+  c= -1: 1.2466
+  c=  0: 74.5710
+  c=  1: 1.2383
+  c=  2: 1.2629
+  c=  3: 1.2510
+  c=  4: 1.2464
+  c=  5: 1.2536
+  c=  6: 1.2512
+  c=  7: 1.2442
